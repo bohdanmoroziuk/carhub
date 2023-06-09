@@ -34,9 +34,8 @@ const Hero = () => {
             alt="Hero"
             fill
           />
-
-          <div className="hero__image-overlay" />
         </div>
+        <div className="hero__image-overlay" />
       </div>
     </div>
   );
