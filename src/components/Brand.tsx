@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import Image from 'next/image'
+
+import { Logo } from '.'
 
 const Brand = () => {
   return (
@@ -7,13 +8,7 @@ const Brand = () => {
       className="flex justify-center items-center"
       href="/"
     >
-      <Image
-        className="object-contain"
-        src="/logo.svg"
-        alt="CarHub"
-        width={118}
-        height={18}
-      />
+      <Logo />
     </Link>
   )
 }

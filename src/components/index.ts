@@ -1,4 +1,6 @@
 export { default as CustomButton } from './CustomButton'
 export { default as Hero } from './Hero'
 export { default as Header } from './Header'
+export { default as Logo } from './Logo'
 export { default as Brand } from './Brand'
+export { default as Footer } from './Footer'

@@ -1,6 +1,6 @@
 import './globals.css'
 
-import { Header } from '@/components'
+import { Header, Footer } from '@/components'
 
 export const metadata = {
   title: 'CarHub',
@@ -17,6 +17,7 @@ export default function RootLayout({
       <body className="relative">
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   )
