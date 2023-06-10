@@ -1,6 +1,15 @@
-import { Hero, SearchBar, CustomFilter } from '@/components'
+import { Hero, SearchBar, CustomFilter, CarCard } from '@/components'
+import { getCars } from '@/api'
 
-export default function Home() {
+export default async function Home() {
+  const [error, cars] = await getCars()
+
+  const hasCars =
+    !error
+    cars &&
+    Array.isArray(cars) &&
+    cars.length > 0
+
   return (
     <main className="home overflow-hidden">
       <Hero />
@@ -25,6 +34,26 @@ export default function Home() {
             <CustomFilter title="year" />
           </div>
         </div>
+
+        {hasCars
+          ? (
+            <section>
+              <div className="home__cars-wrapper">
+                {cars!.map((car, index) => (
+                  <CarCard
+                    key={index}
+                    car={car}
+                  />
+                ))}
+              </div>
+            </section>
+          )
+          : (
+            <div className="home__error-container">
+              <h2 className="text-black text-xl font-bold">Oops, no results</h2>
+              <p>{error.message}</p>
+            </div>
+          )}
       </div>
     </main>
   )
