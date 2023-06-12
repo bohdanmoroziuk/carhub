@@ -1,4 +1,5 @@
 import { Hero, SearchBar, CustomFilter, CarCard } from '@/components'
+import { fuels, yearsOfProduction } from '@/constants'
 import { getCars, GetCarsParams } from '@/api'
 
 interface HomeProps {
@@ -8,11 +9,9 @@ interface HomeProps {
 export default async function Home({ searchParams }: HomeProps) {
   const [error, cars] = await getCars(searchParams)
 
-  const hasCars =
-    !error
-    cars &&
-    Array.isArray(cars) &&
-    cars.length > 0
+  const hasCars = !error && cars && Array.isArray(cars) && cars.length > 0
+
+  console.log(searchParams, cars, cars?.length, error, hasCars)
 
   return (
     <main className="home overflow-hidden">
@@ -34,8 +33,14 @@ export default async function Home({ searchParams }: HomeProps) {
           <SearchBar />
 
           <div className="home__filter-container">
-            <CustomFilter title="fuel" />
-            <CustomFilter title="year" />
+            <CustomFilter
+              title="fuel"
+              options={fuels}
+            />
+            <CustomFilter
+              title="year"
+              options={yearsOfProduction}
+            />
           </div>
         </div>
 
@@ -55,7 +60,7 @@ export default async function Home({ searchParams }: HomeProps) {
           : (
             <div className="home__error-container">
               <h2 className="text-black text-xl font-bold">Oops, no results</h2>
-              <p>{error.message}</p>
+              {error && <p>{error.message}</p>}
             </div>
           )}
       </div>

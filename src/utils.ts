@@ -12,3 +12,13 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
 
   return Number.parseFloat(rentalRatePerDay.toFixed(0));
 };
+
+export const updateSearchParam = (key: string, value: string) => {
+  const searchParams = new URLSearchParams(location.search)
+
+  searchParams.set(key, value)
+
+  const path = location.pathname.concat('?').concat(searchParams.toString())
+
+  return path
+}

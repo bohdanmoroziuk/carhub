@@ -12,3 +12,8 @@ export interface Car {
   transmission: string
   year: number
 }
+
+export interface Option {
+  value: string
+  label: string
+}
