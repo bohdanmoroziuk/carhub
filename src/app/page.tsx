@@ -1,8 +1,12 @@
 import { Hero, SearchBar, CustomFilter, CarCard } from '@/components'
-import { getCars } from '@/api'
+import { getCars, GetCarsParams } from '@/api'
 
-export default async function Home() {
-  const [error, cars] = await getCars()
+interface HomeProps {
+  searchParams: GetCarsParams
+}
+
+export default async function Home({ searchParams }: HomeProps) {
+  const [error, cars] = await getCars(searchParams)
 
   const hasCars =
     !error
